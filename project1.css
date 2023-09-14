@@ -16,6 +16,6 @@ html,body{
     top: 50%;
     transform: translate(-50%,-50%);
     height: 200px;
-    width: 300px;
-    border: 1px solid red;
+    width: 400px;
+    border: 1px solid #000;
 }
