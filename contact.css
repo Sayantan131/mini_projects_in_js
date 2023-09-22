@@ -25,5 +25,24 @@ input[type = text],textarea{
     border: 1px solid #ccc;
     box-sizing: border-box;  
     border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=button]{
+    background-color: #04aa60;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+input[type=button]:hover{
+    background-color: #065a34;
 }
 
