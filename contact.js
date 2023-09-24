@@ -1,8 +1,4 @@
-
-
-
-
-function send() {
+function submit() {
     // console.log("function call");
     var Name = document.getElementById("Name").value;
     var email = document.getElementById("Email").value;
@@ -25,11 +21,13 @@ function send() {
     }).then(
         message => {
             if(message=="OK"){
-                swal("Successfull!", "Your  Data is Successfully Received!", "success");
+                alert("Successfull!", "Your  Data is Successfully Received!", "success");
             }
             else{
-                swal("Something Went Wrong!", "Your  Data is not Successfully Received!", "warning");   
+                alert("Something Went Wrong!", "Your  Data is not Successfully Received!", "warning");   
             }
         }
     );
 }
+
+

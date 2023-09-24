@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <form action="" onsubmit="send()">
+        <form action="">
             <h3>GET IN TOUCH</h3>
-            <label for="Name">Name:</label>
+            <label for="Name">*Name:</label>
             <input type="text" id="Name" placeholder="Enter Your Name" required>
             <label for="Email">Email</label>
             <input type="text" id="Email" placeholder="Enter Your Email" required>
@@ -21,7 +21,7 @@
             <input type="text" id="Subject" placeholder="Enter your Subject......" required>
             <label for="Message">Message</label>
             <textarea name="Message" id="Message" placeholder="Enter your Message" style="height:190px;"></textarea>
-            <input type="button" value="SEND" onclick="send()">
+            <button type="submit" value="SEND" onclick={submit}>SEND</button>
         </form>
     </div>
 

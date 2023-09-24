@@ -31,7 +31,7 @@ input[type = text],textarea{
     resize: vertical;
 }
 
-input[type=button]{
+button[type=submit]{
     background-color: #04aa60;
     color: #fff;
     border: none;
