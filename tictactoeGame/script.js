@@ -11,3 +11,9 @@ let turn = "X";
 const changeTurn = ()=>{
    return turn === "X"?"O":"X";
 }
+
+
+//Function to check the win
+const checkWin = ()=>{
+    
+}
