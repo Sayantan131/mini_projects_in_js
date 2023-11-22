@@ -32,8 +32,9 @@ const checkWin = ()=>{
          document.querySelector('.info').innerText = boxtext[e[0]].innerText + "won";
          isgameover = true;
          gameover.play();
-         document.getElementsByClassName('imgbox').getElementByTagName('img').style.width = "200px";
-         
+         music.play();
+         document.querySelector(".imgbox").getElementsByTagName('img')[0].style.width = "200px";
+
          }
          
     })
