@@ -40,15 +40,18 @@ const checkWin = ()=>{
     })
 }
 
+
+//
 let boxes = document.getElementsByClassName("box");
 
 Array.from(boxes).forEach(element=>{
    let boxtext = element.querySelector('.boxtext');
    element.addEventListener('click',()=>{
       if(boxtext.innerText === ''){
+         audioTurn.play();
          boxtext.innerText = turn;
          turn = changeTurn();
-         audioTurn.play();
+         
          checkWin();
          if(!isgameover){
             document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
@@ -58,4 +61,18 @@ Array.from(boxes).forEach(element=>{
 
       }
    })   
+})
+
+//add onclick listener to reset button
+
+reset.addEventListener('click',()=>{
+   let boxtext = document.getElementsByClassName('boxtext');
+   Array.from(boxtext).forEach(e=>{
+      e.innerText = "";
+   });
+   turn = "X";
+   isgameover = false;
+   document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
+   document.querySelector(".imgbox").getElementsByTagName('img')[0].style.width = "0px";
+   music.pause();
 })
