@@ -27,7 +27,7 @@ nav{
     display: grid;
     grid-template-rows: repeat(3, 10vw);
     grid-template-columns: repeat(3, 10vw);
-   
+    position: relative;
     font-family: 'Aoboshi One', serif;
 }
 
@@ -101,7 +101,15 @@ nav{
     font-size: 30px;
 }
 
+.line{
+    background-color: black;
+    width: 0;
+    height: 3px;
+    position: absolute;
+    background-color: #1899D6;
+   transition: width 1s ease-in-out;
 
+}
 
 
 
