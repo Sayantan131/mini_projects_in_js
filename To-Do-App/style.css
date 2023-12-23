@@ -19,3 +19,16 @@
     padding: 40px 30px 70px;
     border-radius: 10px;
 }
+
+.todo-app h2{
+    color: #002763;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.todo-app h2 img{
+    width: 30px;
+    margin-left: 10px;
+}
