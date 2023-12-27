@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List with Calendar</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Todo List with Calendar</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <input type="date" id="dateInput">
+        <button onclick="addTask()">Add Task</button>
+        <div id="calendar"></div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Load tasks on page load
+            loadTasks();
+        });
+
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const dateInput = document.getElementById("dateInput");
+
+            const taskText = taskInput.value.trim();
+            const selectedDate = dateInput.value;
+
+            if (taskText === "" || selectedDate === "") {
+                alert("Please enter both task and date.");
+                return;
+            }
+
+            // Save the task
+            saveTask(selectedDate, taskText);
+
+            // Reload tasks
+            loadTasks();
+
+            // Clear input fields
+            taskInput.value = "";
+            dateInput.value = "";
+        }
+
+        function saveTask(date, task) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
+            tasks[date] = tasks[date] || [];
+            tasks[date].push(task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            const taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || {};
+
+            // Iterate through dates
+            for (const date in tasks) {
+                const tasksForDate = tasks[date];
+
+                // Create a list item for each task
+                tasksForDate.forEach(task => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${date}: ${task}`;
+                    taskList.appendChild(listItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

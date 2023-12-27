@@ -1,5 +1,6 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById('list-container');
+const dateInput = document.getElementById("dateInput");
 
 function addTask(){
     
@@ -10,12 +11,16 @@ function addTask(){
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
+        let date = document.createElement("p");
+        date.innerHTML = dateInput.value;
+        li.appendChild(date);
         let span = document.createElement("span");
         span.innerHTML = "\u00d7"
        li.appendChild(span);
     }
      
     inputBox.value = "";
+    dateInput.value = "";
     saveData();
 }
 
