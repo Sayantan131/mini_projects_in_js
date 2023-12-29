@@ -13,7 +13,7 @@ function addTask() {
     const taskList = document.getElementById('task-list');
 
     const taskItem = document.createElement('div');
-    taskItem.className = 'task';
+    taskItem.className = 'abc';
     taskItem.innerHTML = `
         <input type="checkbox">
         <div>${taskText}</div>
@@ -36,7 +36,7 @@ function removeTask(button) {
 function filterTasksByDate() {
     const dateInput = document.getElementById('date');
     const dateText = dateInput.value;
-    const tasks = document.querySelectorAll('.task');
+    const tasks = document.querySelectorAll('.abc');
 
     tasks.forEach(task => {
         const taskDate = task.querySelector('div:nth-child(3)').textContent;

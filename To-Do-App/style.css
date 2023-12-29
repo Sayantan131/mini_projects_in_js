@@ -113,6 +113,11 @@ ul li span:hover{
 }
 
 
+ul li p{
+    position: absolute;
+    right: 150px;
+}
+
 
 
 

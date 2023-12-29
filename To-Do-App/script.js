@@ -46,3 +46,19 @@ function showTask(){
 
 showTask();
 
+function filterTasksByDate() {
+    const dateText = dateInput.value;
+    const tasks = document.querySelectorAll('#list-container li');
+
+    tasks.forEach(task => {
+        const taskDate = task.querySelector('p').textContent;
+        task.style.display = taskDate === dateText ? 'flex' : 'none';
+    });
+}
+
+document.getElementById('dateInput').addEventListener('input', filterTasksByDate);
+
+
+
+
+
