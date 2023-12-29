@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .date-column {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .task {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+    <title>Date-wise ToDo List</title>
+</head>
+<body>
+
+    <div id="task-form">
+        <label for="task">Task:</label>
+        <input type="text" id="task" placeholder="Enter your task">
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <div id="date-list"></div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('task');
+            const dateInput = document.getElementById('date');
+
+            const taskText = taskInput.value;
+            const dateText = dateInput.value;
+
+            if (taskText.trim() === '' || dateText.trim() === '') {
+                alert('Please enter both task and date.');
+                return;
+            }
+
+            const dateColumn = document.getElementById(dateText);
+            const taskList = dateColumn.querySelector('.task-list');
+
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task';
+            taskItem.innerHTML = `
+                <input type="checkbox">
+                <div>${taskText}</div>
+                <button onclick="removeTask(this)">Remove</button>
+            `;
+
+            taskList.appendChild(taskItem);
+
+            // Clear input fields after adding task
+            taskInput.value = '';
+        }
+
+        function removeTask(button) {
+            const taskItem = button.parentNode;
+            const taskList = taskItem.parentNode;
+            taskList.removeChild(taskItem);
+        }
+    </script>
+
+    <script>
+        // Function to create a new date column
+        function createDateColumn(date) {
+            const dateList = document.getElementById('date-list');
+
+            const dateColumn = document.createElement('div');
+            dateColumn.id = date;
+            dateColumn.className = 'date-column';
+            dateColumn.innerHTML = `
+                <h2>${date}</h2>
+                <div class="task-list"></div>
+            `;
+
+            dateList.appendChild(dateColumn);
+        }
+
+        // Sample: Creating columns for specific dates
+        createDateColumn('2023-01-01');
+        createDateColumn('2023-01-02');
+    </script>
+
+</body>
+</html>

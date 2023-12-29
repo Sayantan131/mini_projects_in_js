@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date-wise ToDo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .task {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="task-form">
+        <label for="task">Task:</label>
+        <input type="text" id="task" placeholder="Enter your task">
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <div id="task-list"></div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('task');
+            const dateInput = document.getElementById('date');
+
+            const taskText = taskInput.value;
+            const dateText = dateInput.value;
+
+            if (taskText.trim() === '' || dateText.trim() === '') {
+                alert('Please enter both task and date.');
+                return;
+            }
+
+            const taskList = document.getElementById('task-list');
+
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task';
+            taskItem.innerHTML = `
+                <input type="checkbox">
+                <div>${taskText}</div>
+                <div>${dateText}</div>
+                <button onclick="removeTask(this)">Remove</button>
+            `;
+
+            taskList.appendChild(taskItem);
+
+            // Clear input fields after adding task
+            taskInput.value = '';
+        }
+
+        function removeTask(button) {
+            const taskItem = button.parentNode;
+            const taskList = document.getElementById('task-list');
+            taskList.removeChild(taskItem);
+        }
+    </script>
+
+</body>
+</html>
