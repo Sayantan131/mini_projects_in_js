@@ -15,8 +15,8 @@ function addTask() {
         date.innerHTML = dateInput.value;
         li.appendChild(date);
         let dueDate = document.createElement("h4");
-        dueDate.innerHTML = "Due Date: " + dueDateInput.value; // Display "Due Date:" for clarity
-        li.appendChild(dueDate);
+        // dueDate.innerHTML = "Due Date: " + dueDateInput.value; // Display "Due Date:" for clarity
+        // li.appendChild(dueDate);
 
         let span = document.createElement("span");
         span.innerHTML = "\u00d7"

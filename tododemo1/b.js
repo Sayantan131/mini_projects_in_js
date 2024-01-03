@@ -22,6 +22,8 @@ function addTask() {
     `;
 
     taskList.appendChild(taskItem);
+    
+
 
     // Clear input fields after adding task
     taskInput.value = '';
