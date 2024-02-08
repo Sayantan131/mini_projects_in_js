@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Project</title>
+    <!-- Google Fonts CDN Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <h2>Ask Your Partner to Be Your Valentine!</h2>
+        <form id="valentineForm" method="get" name="submit-to-google-sheet">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="senderName" class="form-control" placeholder="Enter your name"
+                    maxlength="14" required>
+            </div>
+            <div class="form-group">
+                <label for="crushName">Crush Name</label>
+                <input type="text" id="crushName" name="crushName" class="form-control" maxlength="14"
+                    placeholder="Enter Your Crush's Name" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Your message here..."
+                    maxlength="250" required rows="4"></textarea>
+            </div>
+            <button type="submit" name="submit" class="submit-btn" id="generateButton">Generate URL</button>
+            <div class="long-text" style="max-width: 80vw">
+                <p>
+                <div id="long-text"></div>
+                </p>
+            </div>
+        </form>
+        <button id="copyButton" class="copyButton submit-btn2" style="display:none;">Copy URL</button>
+        <button id="whatsappButton" class="submit-btn3" style="display:none;">
+
+            <img width="20px"
+                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/whatsapp-white-icon.png"
+                alt="wp" class="wpIcon">
+            Share on Whatsapp</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const valentineForm = document.getElementById('valentineForm');
+            const urlDisplay = document.getElementById('long-text');
+            const copyButton = document.getElementById('copyButton');
+            const whatsappButton = document.getElementById('whatsappButton');
+
+            valentineForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const senderName = valentineForm.senderName.value;
+                const crushName = valentineForm.crushName.value;
+                const message = valentineForm.message.value;
+
+                // Encode values before constructing the URL
+                const encodedSenderName = btoa(encodeURIComponent(senderName));
+                const encodedCrushName = btoa(encodeURIComponent(crushName));
+                const encodedMessage = btoa(encodeURIComponent(message));
+                const baseURL = window.location.origin;
+                // Construct the URL with encoded values
+                const generatedURL = `${baseURL}/val.html?s=${encodedSenderName}&c=${encodedCrushName}&m=${encodedMessage}`;
+
+                // Display the generated URL below the button
+                urlDisplay.innerHTML = "<p>Generated URL: <a href='" + generatedURL + "' target='_blank'>" + generatedURL + "</a></p>";
+
+
+                // Remove display: none from copy and WhatsApp buttons
+                copyButton.style.display = "block";
+                whatsappButton.style.display = "block";
+
+                // Enable copy button
+                copyButton.addEventListener('click', function () {
+                    // Copy generated URL to clipboard
+                    navigator.clipboard.writeText(generatedURL)
+                        .then(() => {
+                            alert('URL copied to clipboard');
+                        })
+                        .catch(err => {
+                            console.error('Failed to copy: ', err);
+                        });
+                });
+
+                // Enable WhatsApp sharing
+                whatsappButton.addEventListener('click', function () {
+                    // Open WhatsApp with the generated URL
+                    const whatsappURL = `https://wa.me/?text=I+Have+a+message+For+you...+Look+inside+${encodeURIComponent(generatedURL)}`;
+                    window.open(whatsappURL, '_blank');
+                });
+            });
+        });
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbza2Cbh9ikzfKRtNhTD7ORvuiDbG6UhtKHQbfCCZ8y8ciaTShKfLzrLTI9UGQ0fpmUe/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>

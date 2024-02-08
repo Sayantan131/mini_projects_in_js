@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.long-text p {
+    word-wrap: break-word;
+    /* For older browsers */
+    overflow-wrap: break-word;
+    /* For newer browsers */
+}
+
+body {
+    margin: 0;
+    padding: 15px;
+    min-height: 100vh;
+    background-color: #FFE3EC;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+.form-wrapper {
+    width: 500px;
+    padding: 25px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 0 50px -35px rgba(0, 0, 0, 0.4);
+}
+
+.form-wrapper h2 {
+    margin-bottom: 25px;
+    color: #212529;
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.form-wrapper .form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #212529;
+    text-transform: capitalize;
+}
+
+.form-group .form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid #cccccc;
+    outline: none;
+}
+
+.form-group textarea {
+    height: 100px !important;
+    resize: none;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    padding: 12px 40px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #0072ff 0%, #eb7885 50%, #0080ff 100%);
+    background-size: 200%;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn2 {
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    padding: 12px 40px;
+    color: #ffffff;
+    background-color: #007bff;
+    background-size: 200%;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn3 {
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    padding: 12px 40px;
+    color: #ffffff;
+    background-color: #00b400;
+    background-size: 200%;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-position: 100%;
+}
+
+.star {
+    color: #fd0000;
+    font-size: 18px;
+}
+
+.optional {
+    color: #707070;
+    font-size: 14px;
+}
+
+/* Let's write the media query */
+@media (max-width: 500px) {
+    .form-wrapper {
+        padding: 25px 30px;
+    }
+
+    .form-wrapper h2 {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+}
